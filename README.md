@@ -1,4 +1,4 @@
-# AquaSentinel
+# HydroDetect
 
 AI-assisted IoT industrial water-effluent monitoring dashboard for textile/dyeing industry wastewater compliance.
 
