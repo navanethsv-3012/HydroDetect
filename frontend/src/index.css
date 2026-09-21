@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+/* ─── HydroDetect Industrial SCADA & Enterprise Theme Tokens ───────────── */
+@theme {
+  --color-primary-50: #f0fdfa;
+  --color-primary-100: #ccfbf1;
+  --color-primary-200: #99f6e4;
+  --color-primary-300: #5eead4;
+  --color-primary-400: #2dd4bf;
+  --color-primary-500: #14b8a6;
+  --color-primary-600: #0d9488;
+  --color-primary-700: #0f766e;
+  --color-primary-800: #115e59;
+  --color-primary-900: #134e4a;
+  --color-primary-950: #042f2e;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace;
+}
+
+/* ─── Base Reset ──────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f6f8;
+  color: #0f172a;
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ─── Global Vertical Rhythm & Spacing Scale ────────────────────── */
+/* Standardised spacing: 8 / 16 / 24 / 32px */
+.section-gap   { margin-bottom: 32px; }
+.content-gap   { margin-bottom: 24px; }
+.element-gap   { margin-bottom: 16px; }
+.label-gap     { margin-bottom: 8px; }
+
+/* ─── Custom Industrial Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ─── Unified Card Standard (Equal Padding 24px, 12px Radius, Hover Glow) ─── */
+.enterprise-card, .glass-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.enterprise-card:hover, .glass-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.06);
+  transform: translateY(-2px);
+}
+
+/* KPI Card Accents */
+.card-accent-teal { border-top: 4px solid #2dd4bf; }
+.card-accent-emerald { border-top: 4px solid #10b981; }
+.card-accent-sky { border-top: 4px solid #0284c7; }
+.card-accent-red { border-top: 4px solid #ef4444; }
+.card-accent-indigo { border-top: 4px solid #6366f1; }
+.card-accent-amber { border-top: 4px solid #f59e0b; }
+
+/* ─── High-Tech Hardware Console (Grafana / SCADA Control Room) ─────── */
+.dark-console-card {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 10px 28px -6px rgba(15, 23, 42, 0.25);
+  color: #f8fafc;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark-console-card:hover {
+  border-color: #334155;
+}
+
+/* ─── Login Input Icon Fix ──────────────────────────────────────────── */
+/* Wrapper must be position:relative (already applied inline) */
+.input-icon-left {
+  /* Left-side icon: positioned absolutely, vertically centered */
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  color: #94a3b8;
+  font-size: 1rem; /* 16px */
+  z-index: 1;
+}
+
+.input-icon-right-btn {
+  /* Right-side toggle button: visually centered */
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  color: #94a3b8;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.input-icon-right-btn:hover {
+  color: #475569;
+}
+
+/* Input fields — push text clear of left icon and (optionally) right icon */
+.field-with-icon {
+  height: 46px;
+  width: 100%;
+  padding-left: 42px;   /* icon width (16px) + left offset (13px) + gap (13px) */
+  padding-right: 16px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background-color: rgba(248, 250, 252, 0.5);
+  color: #0f172a;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  outline: none;
+  transition: border-color 0.15s, background-color 0.15s, box-shadow 0.15s;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04);
+}
+
+.field-with-icon.has-right-icon {
+  padding-right: 42px;  /* prevent overlap with eye icon */
+}
+
+.field-with-icon:focus {
+  border-color: #14b8a6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.12);
+}
+
+/* ─── Soft Desaturated Badges ──────────────────────────────────── */
+.badge-compliant {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #ecfdf5;
+  color: #10b981;
+  border: 1px solid #a7f3d0;
+}
+
+.badge-warning {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #fffbeb;
+  color: #f59e0b;
+  border: 1px solid #fde68a;
+}
+
+.badge-violation {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #fef2f2;
+  color: #ef4444;
+  border: 1px solid #fecaca;
+}
+
+/* ─── Leaflet Container Standard ────────────────────────── */
+.leaflet-container {
+  background: #f8fafc !important;
+  border-radius: 12px;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 12px !important;
+}
+
+.leaflet-popup-tip {
+  background: #ffffff !important;
+}
+
